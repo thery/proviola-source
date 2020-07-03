@@ -1,8 +1,8 @@
 from os import makedirs
 from os.path import exists, dirname
 
-from external.BeautifulSoup import Tag, Declaration, BeautifulStoneSoup
-BeautifulStoneSoup.NESTABLE_TAGS["scene"] = []
+from bs4 import Tag, Declaration, BeautifulSoup
+# BeautifulStoneSoup.NESTABLE_TAGS["scene"] = []
 
 from Movie import Movie
 from coqdoc_frame import Coqdoc_Frame

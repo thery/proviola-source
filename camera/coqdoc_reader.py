@@ -8,7 +8,7 @@ from coqdoc_movie import Coqdoc_Movie
 from scene import Scene
 from coqdoc_frame import Coqdoc_Frame
 
-from external.BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 suffix = ".html"
 
@@ -62,24 +62,24 @@ class Coqdoc_Reader(CoqReader):
                     "&quot;":   '"',
                     "&acute;":  "'",
                     }
-    unicode_replacements = {u'\u2260':   u'<>',
-                            u'\u22a2':   u'|-',
-                            u'\u2265':   u'>=',
-                            u'\u2264':   u'<=',
-                            u'\u2227':   u'/\\',
-                            u'\u2228':   u'\\/',
-                            u'\xac':     u'~',
-                            u'\u2190':   u'<-',
-                            u'\u2192':   u'->',
-                            u'\u2194':   u'<->',
-                            u'\xd7':     u'*',
-                            u'\u21d2':   u'=>',
-                            u'\u2200':   u'forall',
-                            u'\u2203':   u'exists',
+    unicode_replacements = {'\u2260':   '<>',
+                            '\u22a2':   '|-',
+                            '\u2265':   '>=',
+                            '\u2264':   '<=',
+                            '\u2227':   '/\\',
+                            '\u2228':   '\\/',
+                            '\xac':     '~',
+                            '\u2190':   '<-',
+                            '\u2192':   '->',
+                            '\u2194':   '<->',
+                            '\xd7':     '*',
+                            '\u21d2':   '=>',
+                            '\u2200':   'forall',
+                            '\u2203':   'exists',
                             }
 
     text = unescape(text, replacements)
-    for key, value in unicode_replacements.items():
+    for key, value in list(unicode_replacements.items()):
       text = text.replace(key, value)
     return text
 

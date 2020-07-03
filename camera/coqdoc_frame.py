@@ -1,6 +1,6 @@
 from Frame import Frame
 from xml.sax.saxutils import escape, unescape
-from external.BeautifulSoup import Tag
+from bs4 import Tag
 TAG_COQDOC = "command-coqdoc"
 
 
@@ -34,7 +34,7 @@ class Coqdoc_Frame(Frame):
     """ 
     Frame.fromxml(self, element)    
     
-    map(self._command_coqdoc.append, element.find(TAG_COQDOC))
+    list(map(self._command_coqdoc.append, element.find(TAG_COQDOC)))
 
 
   def toxml(self, doc):
@@ -43,7 +43,7 @@ class Coqdoc_Frame(Frame):
     tag = Tag(doc, TAG_COQDOC)
     
     if self._command_coqdoc:
-      map(tag.append, self._command_coqdoc)
+      list(map(tag.append, self._command_coqdoc))
       
     frame_xml.append(tag)
     

@@ -12,7 +12,7 @@ def local_which(program):
   try:
     return which.which(program)
   except which.WhichError:
-    print "Which error"
+    print("Which error")
     return None
   
 def get_prover(url = None, group = None, 

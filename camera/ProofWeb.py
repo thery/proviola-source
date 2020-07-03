@@ -21,8 +21,8 @@
 """ProofWeb class representing the abstract interface to ProofWeb.
 """
 
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import string 
 import sys
 import logging
@@ -43,7 +43,7 @@ class ProofWeb(object):
     self.prover = prover
 
     # Login to ProofWeb, get a session id.
-    loginInfo = urllib.urlencode(
+    loginInfo = urllib.parse.urlencode(
       {"login"  : "%s/%s"%(self.group, self.user),
        "pass"   : self.pswd,
        "prover" : self.prover
@@ -52,7 +52,7 @@ class ProofWeb(object):
     handler = ResultHandler()
     
     try:
-      prover = urllib2.urlopen(self.url, loginInfo)
+      prover = urllib.request.urlopen(self.url, loginInfo)
       data = prover.read()
       prover.close()
     
@@ -61,8 +61,8 @@ class ProofWeb(object):
     
       #TODO Breaks if session is not found in the web page
       self.session = string.strip(handler.assignments['session'], '\"')
-    except urllib2.HTTPError:
-      print "Error sending login information"
+    except urllib.error.HTTPError:
+      print("Error sending login information")
 
 
 
@@ -102,7 +102,7 @@ class ProofWeb(object):
     end = self.pos + len(command)
     cmdarg = cmdarg%(begin, command, end)
     
-    commandInfo = urllib.urlencode( \
+    commandInfo = urllib.parse.urlencode( \
       { "command"      : "addtobuf", \
         "callnr"       : self.callnr, \
         "s"            : self.session, \
@@ -110,8 +110,8 @@ class ProofWeb(object):
       })
     
     try:
-      prover = urllib2.urlopen(self.url, commandInfo)
-    except urllib2.HTTPError:
+      prover = urllib.request.urlopen(self.url, commandInfo)
+    except urllib.error.HTTPError:
       logging.debug("Error sending command to ProofWeb")
       return ""
 

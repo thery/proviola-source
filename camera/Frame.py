@@ -17,7 +17,7 @@
 # along with Proof Camera.  If not, see <http://www.gnu.org/licenses/>.
 
 from xml.sax.saxutils import escape, unescape
-from external.BeautifulSoup import Tag
+from bs4 import Tag
 
 
 TAG_FRAME = "frame"

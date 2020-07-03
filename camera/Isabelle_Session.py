@@ -1,4 +1,4 @@
-from xmlrpclib import ServerProxy
+from xmlrpc.client import ServerProxy
 
 TIMEOUT = 60000
 ARGS = []

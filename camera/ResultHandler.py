@@ -19,7 +19,7 @@
 
 
 import re
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
 """ Handle the HTML coming from ProofWeb.
 """

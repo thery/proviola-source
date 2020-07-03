@@ -37,7 +37,7 @@ class Coq_Local(object):
     # Clear Coq greeting.
     data = self._read_coq()
     if not data:
-      print "Could not manage coq."
+      print("Could not manage coq.")
 
   def _read_coq(self):
     """ Read data from Coqtop. Read stdout after the  """

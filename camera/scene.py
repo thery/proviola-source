@@ -1,4 +1,4 @@
-from external.BeautifulSoup import Tag
+from bs4 import Tag
 from coqdoc_frame import Coqdoc_Frame
 
 class Scene(object):
@@ -87,8 +87,8 @@ class Scene(object):
     try:
       self.set_type(element['class'])
     except KeyError:
-      print "Class does not exist in element {el}, setting to doc.".\
-          format(el = element)
+      print("Class does not exist in element {el}, setting to doc.".\
+          format(el = element))
       self.set_type("doc")
 
     self.set_number(['scenenumber'])
